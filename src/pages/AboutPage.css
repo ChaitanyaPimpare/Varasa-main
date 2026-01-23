@@ -1,0 +1,645 @@
+.about-section {
+  position: relative;
+  background: linear-gradient(to bottom, #ddcc9b 0%, #ffffff 35%);
+  padding: 100px 0;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+}
+
+/* Adjust vertical line base */
+.vertical-line {
+  position: absolute;
+  left: 150px;
+  top: 90px;
+  bottom: 0;
+  width: 35px;
+  background: #bb9773;
+  border: 2px solid #d4af37;
+  border-radius: 6px;
+  z-index: 3;
+}
+
+/* Shared Circle Base */
+.circle {
+  width: 90px;
+  height: 90px;
+  background: #ffffff;
+  border: 2px solid #d4af37;
+  border-radius: 50%;
+  position: absolute;
+  left: -28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Circle Images */
+.circle img {
+  width: 80%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Big top circle */
+.top-circle {
+  width: 120px;
+  height: 120px;
+  top: -30px;
+  left: -46px;
+  background-color: #d4af37;
+  border: 3px solid #37a7d4;
+}
+
+/* Three mission circles evenly spaced below top one */
+.mission-circle:nth-of-type(2) { top: 780px; }
+.mission-circle:nth-of-type(3) { top: 1090px; }
+.mission-circle:nth-of-type(4) { top: 1500px; }
+
+/* Timeline circles align with each card top */
+.timeline-circle:nth-of-type(5) { top: 2730px; }
+.timeline-circle:nth-of-type(6) { top: 4040px; }
+.timeline-circle:nth-of-type(7) { top: 4780px; }
+.timeline-circle:nth-of-type(8) { top: 5480px; }
+.timeline-circle:nth-of-type(9) { top: 6200px; }
+.timeline-circle:nth-of-type(10) { top: 6820px; }
+
+
+.horizontal-yellow-line {
+  position: relative;
+  width: 100vw;
+  height: 120px; /* adjust height as needed */
+  background-color: #D4AF37; /* golden-yellow tone */
+  margin-top: -90px; /* overlaps slightly under the vertical line */
+  left: 50%;
+  transform: translateX(-58%);
+  z-index: -1;
+  margin-bottom: 10px;
+}
+.horizontal-yellow-lin {
+  position: relative;
+  width: 100vw;
+  height: 120px; /* adjust height as needed */
+  background-color: #E9D8A6; /* golden-yellow tone */
+  margin-top: -90px; /* overlaps slightly under the vertical line */
+  left: 50%;
+  transform: translateX(-58%);
+  z-index: -1;
+  margin-bottom: 10px;
+}
+.yellow-divider {
+  width: 100vw;
+  height: 60px;
+  background-color: #d4a017;
+  margin-left: calc(-50vw + 50%);
+
+}
+
+
+.mission-card{
+  place-items: center;
+}
+/* Content wrapper beside line */
+.content-wrapper {
+  margin-left: 300px;
+  width: 70%;
+  z-index: 2;
+  position: relative;
+}
+
+/* Shared Card Style */
+.card {
+  background-color: #fff7e6;
+  border: 2px solid #d4af37;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* darker black shadow */
+  padding: 30px 40px;
+  margin-bottom: 60px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* Headings */
+.card h2 {
+  color: #7C3A2D;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.card h4 {
+  text-align: center;
+  margin-top: 0;
+  font-size: medium;
+  font-weight: 300;
+}
+
+/* Mission */
+.mission-card ul {
+  list-style: disc;
+  padding-left: 25px;
+
+  color: #3b2a1a;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+.mission-card ul li::marker {
+  color: #c59a4d; /* golden or any color you want */
+  font-size: 1.5em; /* optional – make bullet slightly larger */
+}
+.know-more-btn {
+  background-color: #7C3A2D;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 15px 24px;
+  display: block;
+  margin: 20px auto 0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.know-more-btn:hover {
+  background-color: #8d6b35;
+}
+
+/* Vision */
+.vision-card p {
+  font-size: 1rem;
+  color: #BE9305;
+ font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-style: italic;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* Values */
+.values-card {
+  text-align: center;
+}
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  justify-items: center;
+  align-items: center;
+  position: relative;
+}
+.value-item {
+  background-color: #8c573d;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.compass-rose-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.compass-rose-image {
+  width: 160px;
+  background-color:#fff7e6;
+  
+}
+
+
+
+/* Timeline */
+.timeline-card {
+  display: flex;
+  align-items: flex-start;
+  background: #fff7e6;
+  border: 2px solid #d4af37;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  padding: 25px 40px;
+  margin-bottom: 60px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* Pillar logic */
+.pillar-holder {
+  margin-right: -20px; /* moves the pillar closer to left */
+  position: relative;
+  left: -20px; /* visually shift image left */
+  flex-shrink: 0; /* keep width fixed */
+  z-index: 2;
+}
+
+.pillar-img {
+  width: 110px;
+  margin-bottom: -60px;
+  height: auto;
+  object-fit: contain;
+ 
+}
+
+/* Placeholder for layout consistency when no pillar */
+.pillar-placeholder {
+  width: 80px; /* smaller width to reduce empty space */
+  margin-right: 0;
+  background: transparent;
+  flex-shrink: 0;
+}
+/* Custom adjustments */
+.pillar-tall {
+  height: 1290px;
+
+width: 120px;
+
+}
+
+
+/* Timeline content */
+.timeline-content {
+  flex: 1;
+  text-align: center;
+}
+
+/* Image section */
+.timeline-photo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photo-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #f1c226;
+  position: relative;
+}
+
+/* Normal image style */
+.timeline-photo {
+  width: 130px;
+  height: 130px;
+  border-radius: 4px;
+  object-fit: cover;
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Circular style for last 3 cards */
+.timeline-card:last-of-type .timeline-photo,
+.timeline-card:nth-last-child(2) .timeline-photo,
+.timeline-card:nth-last-child(3) .timeline-photo {
+  border-radius: 50%;
+ 
+ 
+}
+
+/* Text styling */
+.timeline-title {
+  margin-top: 10px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #6c4c1d;
+}
+.timeline-subtitle {
+  color: #b68a45;
+  font-weight: 600;
+  width: 30%;
+  margin-top: 5px;
+}
+.timeline-desc {
+
+  font-size: 1.1rem;
+  line-height: 1.7;
+  text-align: justify;
+  color: #3b2a1a;
+}
+
+/* Base styling for all right-bottom images */
+.timeline-right-img {
+  position: relative;
+  text-align: right;
+  margin-top: 0;
+}
+
+.timeline-right-img img {
+  width: 300px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+/* 🐂 Bull image (slightly above, semi-transparent) */
+.timeline-right-img.bull-image img {
+  opacity: 0.3;
+  position: relative;
+  margin-top: -75px; /* slightly above the bottom border */
+  right: -10px;
+  margin-bottom: -60px;
+}
+
+/* 🦅 Eagle image (touches bottom border, full opacity) */
+.timeline-right-img.eagle-image img {
+  width: 300px;
+  opacity: 1;
+  position: relative;
+ bottom: -30px; /* touches bottom border */
+  right: -30px;
+}
+
+/* For all bottom decorative images */
+.timeline-bottom-img {
+  position: relative;
+  text-align: left;
+  margin-top: 8px;
+  
+}
+
+.timeline-bottom-img img {
+  width: 150px;
+  opacity: 0.95;
+  border-radius: 8px;
+
+}
+/* 🐅 Tiger 1 (for Founder section) */
+.timeline-bottom-img.tiger1-img img {
+  margin-top: 70px;     /* lift slightly */
+  margin-left: -10px;
+  margin-bottom:-60px;
+  width: 300px;    /* move inward */
+  opacity: 0.85;         /* a bit faded for layering effect */
+  transform: rotate(-3deg); /* optional tilt for visual interest */
+}
+
+/* 🐅 Tiger 2 (for Vice President section) */
+.timeline-bottom-img.tiger2-img img {
+   margin-top:-1px;    /* less lifted than tiger1 */
+    
+  margin-left: -50px;     /* move more inside */
+  opacity: 1;            /* full visibility */
+  transform: rotate(2deg);
+  z-index: 1;
+
+}
+
+/* --- Special styling for LAST card bottom image (Peacock) --- */
+.last-card-bottom {
+ 
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.last-card-bottom img {
+  width: 250px;              /* make slightly larger */
+  border-radius: 0 0 16px 0;
+  /* rounded only on bottom-right corner */
+position: relative;
+  transform: none;  
+  bottom: 0;
+left: -175px;
+bottom: -33px;
+
+  object-fit: contain;
+  transform: translate(55px, 10px); /* adjust to hug corner tightly */
+}
+/* Ink bottle image on right */
+.ink-bottle {
+ 
+  border-radius: 4px;
+  object-fit: cover;
+  position: absolute;
+  left: 70%;
+}
+
+.ink-bottle img {
+  width: 180px;
+  height: 180px;
+  opacity: 0.9;
+}
+
+/* ===========================
+   RESPONSIVE: Mobile & Tablet
+   =========================== */
+
+/* Small improvements for tablet-sized screens (<= 900px) */
+@media (max-width: 900px) {
+  /* move vertical line closer and reduce its height */
+  .vertical-line {
+    left: 20px;
+    top: 40px;
+    width: 28px;
+    border-radius: 6px;
+  }
+    
+  /* shrink big top circle and mission circles */
+  .top-circle { width: 90px; height: 90px; left: -32px; top: -20px; }
+  .circle { width: 72px; height: 72px; left: -22px; }
+  .circle img { width: 78%; }
+
+  /* content area becomes wider and centered */
+  .content-wrapper {
+    margin-left: 110px; /* leave space for vertical line */
+    width: calc(100% - 140px);
+    padding-right: 20px;
+  }
+
+  /* reduce card padding to save space */
+  .card {
+    padding: 18px 20px;
+    margin-bottom: 36px;
+  }
+
+  /* timeline card becomes stacked for easier read */
+  .timeline-card {
+    flex-direction: column;
+    align-items: center;
+    padding: 18px;
+  }
+
+  /* pillar removed on smaller screens */
+  .pillar-holder,
+  .pillar-placeholder { display: none; }
+
+  /* photo sizes */
+  .photo-circle { width: 100px; height: 100px; }
+  .timeline-photo { width: 100px; height: 100px; top: -8px; }
+
+  .timeline-title { font-size: 1.1rem; }
+  .timeline-subtitle { width: 60%; margin: 6px auto 0; }
+
+  .timeline-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    padding: 0 6px;
+    text-align: left;
+  }
+
+  /* ink bottle: reposition to avoid overlap */
+  .ink-bottle { left: 60%; top: 10px; }
+  .ink-bottle img { width: 140px; height: 140px; }
+
+  /* right-bottom decorative images scale down and reposition */
+  .timeline-right-img img,
+  .timeline-bottom-img img,
+  .last-card-bottom img {
+    width: auto;
+    max-width: 45%;
+    height: auto;
+  }
+
+  /* tiger specific adjustments */
+  .timeline-bottom-img.tiger1-img img { max-width: 46%; margin-top: -12px; margin-left: 6px; transform: rotate(-2deg); opacity: 0.9; }
+  .timeline-bottom-img.tiger2-img img { max-width: 44%; margin-top: 6px; margin-left: 0; transform: rotate(1.5deg); }
+
+  /* last card peacock tweaks */
+  .last-card-bottom img { max-width: 56%; left: 0; transform: translate(20px, 6px); bottom: -10px; }
+
+  /* Horizontal yellow bars: reduce height and adjust left offset */
+  .horizontal-yellow-line, .horizontal-yellow-lin {
+    height: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: -60px;
+  }
+
+  .yellow-divider { height: 48px; }
+}
+
+/* Narrow mobile screens (<= 600px) - stack & scale more aggressively */
+@media (max-width: 600px) {
+  .vertical-line { left: 10px; top: 30px; width: 22px; }
+  .circle { left: -18px; }
+  .top-circle { left: -36px; width: 86px; height: 86px; }
+
+  .content-wrapper {
+    margin-left: 100px; /* narrow gap for line */
+    width: calc(100% - 120px);
+  }
+  .value-item{
+  width: 130px;
+  height: 130px;
+  }
+  .card { padding: 14px 16px; border-radius: 12px; }
+  .mission-card .Mission-img { margin-left: 0px; } /* reduces left offset on smaller screens */
+
+  .values-grid { gap: 18px; }
+  .compass-rose-container { display: none !important; }
+
+  .timeline-desc { font-size: 0.98rem; line-height: 1.55; }
+
+  .photo-circle { width: 88px; height: 88px; }
+  .timeline-photo { width: 86px; height: 86px; top: -6px; }
+
+  /* images: use percentages and max-width to avoid overflow */
+  .timeline-bottom-img img,
+  .timeline-right-img img,
+  .last-card-bottom img {
+    width: 100%;
+    max-width: 240px;
+  }
+.timeline-right-img.bull-image img {
+  margin-bottom: 6px;
+  top: 40px
+}
+  /* tiger adjustments for mobile */
+  .timeline-bottom-img.tiger1-img img {
+   margin-bottom: -6px;
+    margin-left: 0;
+    max-width: 220px;
+    transform: rotate(-1.5deg);
+  }
+  .timeline-bottom-img.tiger2-img img {
+    margin-top: 0;
+    margin-left: 0;
+    max-width: 200px;
+    transform: rotate(1deg);
+  }
+
+  .ink-bottle { left: 58%; top: 6px; }
+  .ink-bottle img { width: 120px; height: 120px; }
+
+  .timeline-subtitle { width: 100%; margin: 6px 0 8px; }
+
+  /* Reduce horizontal yellow bar intrusion on small phones */
+  .horizontal-yellow-line, .horizontal-yellow-lin {
+    height: 60px;
+    margin-top: -48px;
+  }
+  .yellow-divider { height: 36px; }
+}
+
+/* Very small phones (<=420px) - stack everything full width */
+@media (max-width: 420px) {
+  .vertical-line { display: none; } /* hide vertical line leftover to save space */
+  .circle { display: none; }
+
+  .content-wrapper {
+    margin-left: 16px;
+    width: calc(100% - 32px);
+  }
+
+  .card { padding: 12px; margin-bottom: 22px; border-radius: 10px; }
+
+  .timeline-card {
+    padding: 12px;
+  }
+
+  .timeline-photo { position: static; transform: none; margin-bottom: 8px; }
+  .photo-circle, .timeline-photo { width: 78px; height: 78px; }
+
+  .timeline-title { font-size: 1rem; }
+  .timeline-desc { font-size: 0.95rem; line-height: 1.5; text-align: left; }
+
+  /* ensure bottom images flow under content without overflow */
+  .timeline-bottom-img,
+  .timeline-right-img,
+  .last-card-bottom {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 12px;
+  }
+  .timeline-bottom-img img,
+  .timeline-right-img img,
+  .last-card-bottom img {
+    max-width: 180px;
+    top: 12px;
+    width: auto;
+  
+
+  }
+  .timeline-bottom-img.tiger1-img img,
+  .timeline-bottom-img.tiger2-img img { margin-left: 0; transform: none; opacity: 1; }
+
+  .ink-bottle { position: static; margin: 8px auto 0; left: auto; }
+  .ink-bottle img { width: 100px; height: 100px; }
+
+  /* horizontal yellow bars become decorative full-width strips */
+  .horizontal-yellow-line, .horizontal-yellow-lin {
+    height: 36px;
+    margin-top: -28px;
+    left: 0;
+    transform: none;
+    width: 100%;
+  }
+  .yellow-divider { height: 28px; }
+}
+
+/* Accessibility: reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .card, .timeline-card { transition: none !important; transform: none !important; }
+}

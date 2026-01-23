@@ -1,0 +1,170 @@
+.contact-page {
+  background: #e9d8a6;
+  padding: 70px 20px;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+.contact-card {
+  width: min(1150px, 100%);
+  background: #fff7e6;
+  border-radius: 18px;
+  border: 2px solid #d8b24d;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+
+/* top logo section */
+.contact-top {
+  text-align: center;
+  padding: 25px 20px 10px;
+}
+
+.contact-logo {
+  width: 85px;
+  margin-bottom: 10px;
+}
+
+.contact-subtitle {
+  font-size: 0.85rem;
+  color: #5c4a3a;
+}
+
+/* Title bar */
+.contact-title-bar {
+  background: #7a3f2c;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* main content */
+.contact-content {
+  display: flex;
+  gap: 20px;
+  padding: 30px;
+}
+
+/* Left */
+.contact-left {
+  flex: 1;
+  border-radius: 14px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  min-height: 330px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.contact-left::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.contact-left-circle {
+  position: relative;
+  z-index: 2;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  background: #d7a829;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.contact-left-circle h2 {
+  font-size: 1.5rem;
+  color: #7a3f2c;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.contact-left-circle p {
+  font-size: 0.95rem;
+  color: #4b2c1e;
+  font-weight: 600;
+}
+
+/* Right Form */
+.contact-form {
+  flex: 1;
+  padding: 10px 20px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  color: #2f2f2f;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #444;
+  background: transparent;
+  padding: 6px 4px;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.privacy-note {
+  font-size: 0.72rem;
+  color: #555;
+  margin-top: 8px;
+}
+
+.submit-btn {
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background: #7a3f2c;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 45px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: #5a2c1f;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .contact-content {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .contact-form {
+    padding: 10px 10px;
+  }
+
+  .contact-left-circle {
+    width: 200px;
+    height: 200px;
+  }
+}
