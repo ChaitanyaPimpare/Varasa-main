@@ -5,7 +5,6 @@ import Footer from "../components/Footer/Footer";
 import ResearchHero from "../components/ResearchHero/ResearchHero";
 import logoSymbol from "../assets/logo-symbol.png";
 
-import logo from "../assets/footerLogo.png"; // ✅ use your logo
 import bg from "../assets/heritageBg.png";  // ✅ optional background
 
 export default function ContactPage() {
