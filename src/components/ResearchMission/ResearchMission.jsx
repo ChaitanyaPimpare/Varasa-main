@@ -19,7 +19,7 @@ export default function ResearchMission() {
           <li><strong>Digital Integration</strong> - Creating online repositories and interactive research databases.</li>
         </ul>
 
-        <button className="mission-btn">Know More</button>
+        {/* <button className="mission-btn">Know More</button> */}
       </div>
     </section>
   );

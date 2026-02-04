@@ -20,7 +20,7 @@ export default function LearningSeminarSection() {
         "Cultural Outreach: Engage with local communities and understand cultural and heritage landscapes.",
         "Expert Mentorship: Receive hands-on training from seasoned archaeologists and conservation professionals."
       ],
-      btn: "Know More"
+     
     },
     {
       img: seminar2,
@@ -82,7 +82,7 @@ export default function LearningSeminarSection() {
                       ))}
                     </ul>
 
-                    <button className="learning-btn">{item.btn}</button>
+                    
                   </>
                 ) : (
                   <>
@@ -97,7 +97,7 @@ export default function LearningSeminarSection() {
                     <p className="learning-heading">Introduction</p>
                     <p className="learning-para">{item.introduction}</p>
 
-                    <button className="learning-btn">Know More</button>
+                    {/* <button className="learning-btn">Know More</button> */}
                   </>
                 )}
               </div>

@@ -91,7 +91,7 @@ export default function TrainingWorkshopSection() {
               archaeology and cultural preservation.
             </p>
 
-            <button className="training-apply-btn">Apply Now</button>
+            {/* <button className="training-apply-btn">Apply Now</button> */}
 
           </div>
         </div>

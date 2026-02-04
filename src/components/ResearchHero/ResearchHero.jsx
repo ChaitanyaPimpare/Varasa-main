@@ -33,7 +33,7 @@ export default function ResearchHero() {
             shared.”
           </p>
 
-          <button className="research-btn">Our Work</button>
+          {/* <button className="research-btn">Our Work</button> */}
         </div>
 
       </div>

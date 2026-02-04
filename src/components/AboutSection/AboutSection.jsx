@@ -1,7 +1,7 @@
 import React from "react";
 
 
-import logoSymbol from "../../assets/logo-symbol.png";
+import logoSymbol from "../../assets/Golden.png";
 
 export default function AboutSection() {
   return (
@@ -10,7 +10,7 @@ export default function AboutSection() {
         <div className="about-logo">
           <div className="circle-logo">
             <img src={logoSymbol} alt="Varasa Symbol" />
-            <p>Association for Cultural Heritage and Archaeology</p>
+          
           </div>
         </div>
         <div className="about-text">
@@ -27,7 +27,7 @@ export default function AboutSection() {
             conservation experts, we strive to keep the legacy of our tangible and
             intangible heritage alive for future generations.
           </p>
-          <button className="primary-btn">Know More</button>
+          {/* <button className="primary-btn">Know More</button> */}
         </div>
       </div>
     </section>

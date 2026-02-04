@@ -30,7 +30,7 @@ export default function AboutIntro() {
             documentation, conservation and restoration of heritage sites, ensuring that
             history remains accessible and meaningful for future generations.
           </p>
-          <button className="about-btn">Our Work</button>
+          {/* <button className="about-btn">Our Work</button> */}
         </div>
       </div>
     </section>

@@ -91,7 +91,7 @@ export default function DonateGrantsPage() {
                   <p className="csr-heading">Introduction</p>
                   <p className="csr-para">{p.introduction}</p>
 
-                  <button className="csr-btn">Know More</button>
+                  {/* <button className="csr-btn">Know More</button> */}
                 </div>
               </div>
 
