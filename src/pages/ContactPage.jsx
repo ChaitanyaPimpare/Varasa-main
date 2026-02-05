@@ -2,7 +2,7 @@ import React from "react";
 import "./ContactPage.css";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-import ResearchHero from "../components/ResearchHero/ResearchHero";
+;
 import logoSymbol from "../assets/logo-symbol.jpg";
 
 import bg from "../assets/heritageBg.png";  // ✅ optional background
