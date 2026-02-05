@@ -5,7 +5,7 @@ export default function EventsSection() {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    setEvents(loadData("events", []));   // ✅ FIXED KEY
+    setEvents(loadData("events", []));
   }, []);
 
   return (

@@ -4,26 +4,29 @@ import "./admin.css";
 
 const pageSections = {
   home: [
-    { key: "events", label: "Events (Home Page)" },
-    { key: "programs", label: "Programs (Home Page)" },
-    { key: "researchHome", label: "Research Highlights (Home Page)" }
+    { key: "programs", label: "Programs (Home Page)", limit: 4 },
+    { key: "events", label: "Events (Home Page)", limit: 4 },
+    { key: "researchHome", label: "Research Highlights (Home Page)", limit: 4 }
   ],
   research: [
-    { key: "research_publications", label: "Publications" },
-    { key: "research_seminars", label: "Learning & Seminars" },
-    { key: "research_training", label: "Training & Workshop" }
+    { key: "research_publications", label: "Publications", limit: 4 },
+    { key: "research_seminars", label: "Learning & Seminars", limit: 4 },
+    { key: "research_training", label: "Training & Workshop", limit: 4 }
   ],
   eventsPage: [
-    { key: "events_page", label: "Events Page Slider" }   // ⭐ NEW SECTION
+    { key: "events_page", label: "Events Page Slider", limit: 10 }
   ]
 };
 
 export default function AdminDashboard() {
   const [page, setPage] = useState("home");
-  const [section, setSection] = useState("events");
+  const [section, setSection] = useState("programs");
   const [items, setItems] = useState([]);
   const [selected, setSelected] = useState(null);
   const [dragIndex, setDragIndex] = useState(null);
+
+  const currentSectionObj = pageSections[page].find(sec => sec.key === section);
+  const cardLimit = currentSectionObj?.limit || 4;
 
   useEffect(() => {
     if (!localStorage.getItem("isAdmin")) window.location.href = "/";
@@ -44,12 +47,15 @@ export default function AdminDashboard() {
   };
 
   const addNew = () => {
+    if (items.length >= cardLimit)
+      return alert(`Only ${cardLimit} cards allowed in this section`);
+
     saveAll([
       ...items,
       {
         id: Date.now(),
-        title: "New Event Title",
-        desc: "Event description",
+        title: "New Title",
+        desc: "Description",
         img: "",
         date: "",
         location: ""
@@ -80,35 +86,6 @@ export default function AdminDashboard() {
     window.location.href = "/";
   };
 
-  /* ================= IMAGE COMPRESSION ================= */
-  const handleImageUpload = (file) => {
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const img = new Image();
-      img.src = event.target.result;
-
-      img.onload = () => {
-        const canvas = document.createElement("canvas");
-        const ctx = canvas.getContext("2d");
-
-        const MAX_WIDTH = 900;
-        const scale = MAX_WIDTH / img.width;
-
-        canvas.width = MAX_WIDTH;
-        canvas.height = img.height * scale;
-
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-        const compressed = canvas.toDataURL("image/jpeg", 0.65);
-        setSelected(prev => ({ ...prev, img: compressed }));
-      };
-    };
-
-    reader.readAsDataURL(file);
-  };
-
   return (
     <div className="admin-layout">
       <div className="admin-sidebar">
@@ -123,7 +100,7 @@ export default function AdminDashboard() {
         <select value={page} onChange={e => setPage(e.target.value)}>
           <option value="home">Home Page Sections</option>
           <option value="research">Research Page Sections</option>
-          <option value="eventsPage">Events Page</option> {/* ⭐ NEW */}
+          <option value="eventsPage">Events Page Slider</option>
         </select>
 
         <label>Section</label>
@@ -133,6 +110,7 @@ export default function AdminDashboard() {
           ))}
         </select>
 
+        <div className="card-limit">{items.length}/{cardLimit} Cards Used</div>
         <button onClick={addNew} className="admin-add-btn">+ Add New Card</button>
 
         <ul className="admin-list">
@@ -145,8 +123,8 @@ export default function AdminDashboard() {
               onDrop={() => handleDrop(index)}
               className={`admin-list-item ${selected?.id === item.id ? "active" : ""}`}
             >
-              <span onClick={() => setSelected(item)}>{item.title}</span>
-              <button onClick={() => deleteItem(item.id)}>🗑</button>
+              <span className="title" onClick={() => setSelected(item)}>{item.title}</span>
+              <button className="delete-icon" onClick={() => deleteItem(item.id)}>🗑</button>
             </li>
           ))}
         </ul>
@@ -155,7 +133,7 @@ export default function AdminDashboard() {
       <div className="admin-editor">
         {selected ? (
           <>
-            <h3>Edit Event</h3>
+            <h3>Edit Card</h3>
 
             <label>Title</label>
             <input value={selected.title} onChange={e => setSelected({ ...selected, title: e.target.value })} />
@@ -163,25 +141,34 @@ export default function AdminDashboard() {
             <label>Description</label>
             <textarea value={selected.desc} onChange={e => setSelected({ ...selected, desc: e.target.value })} />
 
-            <label>Date</label>
-            <input value={selected.date || ""} onChange={e => setSelected({ ...selected, date: e.target.value })} />
+            {(page === "eventsPage") && (
+              <>
+                <label>Date</label>
+                <input value={selected.date || ""} onChange={e => setSelected({ ...selected, date: e.target.value })} />
 
-            <label>Location</label>
-            <input value={selected.location || ""} onChange={e => setSelected({ ...selected, location: e.target.value })} />
+                <label>Location</label>
+                <input value={selected.location || ""} onChange={e => setSelected({ ...selected, location: e.target.value })} />
+              </>
+            )}
 
             <label>Image</label>
-            <input type="file" accept="image/*" onChange={e => handleImageUpload(e.target.files[0])} />
+            <input type="file" accept="image/*" onChange={e => {
+              const reader = new FileReader();
+              reader.onload = () => setSelected({ ...selected, img: reader.result });
+              reader.readAsDataURL(e.target.files[0]);
+            }} />
 
             {selected.img && <img src={selected.img} alt="" className="admin-preview" />}
 
             <div className="admin-actions">
               <button onClick={saveItem}>Save Changes</button>
-              <button onClick={() => deleteItem(selected.id)} className="danger">Delete</button>
+              <button onClick={() => deleteItem(selected.id)} className="danger">Delete Card</button>
             </div>
           </>
         ) : (
           <div className="empty-editor">
             <h3>Select a card to edit</h3>
+            <p>Or create a new one from the left panel.</p>
           </div>
         )}
       </div>

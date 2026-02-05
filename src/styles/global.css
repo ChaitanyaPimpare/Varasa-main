@@ -303,7 +303,7 @@ html, body {
 
 /* Content */
 .event-content {
-  padding: 22px 24px 26px;
+  padding: 10px 10px;
   display: flex;
   flex-direction: column;
 }
@@ -311,28 +311,11 @@ html, body {
 /* Title */
 .event-content h5 {
   font-family: 'Playfair Display', serif;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   color: #4a2516;
   margin-bottom: 10px;
 }
 
-/* Description collapsed */
-.event-content p {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
-  color: #6b4b3e;
-  line-height: 1.6;
-  max-height: 44px;
-  overflow: hidden;
-  transition: max-height 0.6s ease, opacity 0.4s ease;
-  opacity: 0.85;
-}
-
-/* Expand downward smoothly */
-.event-card:hover .event-content p {
-  max-height: 240px;
-  opacity: 1;
-}
 
 
 .programs-section {
