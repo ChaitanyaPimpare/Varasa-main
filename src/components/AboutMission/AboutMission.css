@@ -1,176 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=EB+Garamond:wght@400;500&display=swap');
+
+/* ================= ABOUT MISSION SECTION ================= */
 .about-mission {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  background-color: #E9D8A6;
+  background: linear-gradient(135deg, #f3e6cf 0%, #e8dcc7 100%);
   position: relative;
-  padding: 80px 0;
+  padding: 100px 0;
   min-height: 100vh;
-  font-family: "Poppins", sans-serif;
+  font-family: 'EB Garamond', serif;
+  border-top: 2px solid #d4af37;
+  border-bottom: 2px solid #d4af37;
+  overflow: hidden;
+}
+
+/* Aged manuscript texture */
+.about-mission::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://www.transparenttextures.com/patterns/aged-paper.png");
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+/* Vertical heritage pillar */
+.vertical-line {
+  width: 36px;
+  background: linear-gradient(180deg, #7C3A2D, #D4AF37);
+  position: absolute;
+  left: 180px;
+  top: 0;
+  bottom: 0;
+  border-radius: 6px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+/* Container */
+.mission-container {
+  margin-left: 200px;
+  width: 60%;
+  position: relative;
   z-index: 1;
 }
 
-/* Vertical brown bar */
-.vertical-line {
-  width: 30px;
-background: #BB9773;
-
-  position: absolute;
-  left: 200px;
-  top: 0;
-  bottom: 0;
-  border-radius: 0px;
-}
-
-/* Circular icons on bar
-.top-emblem,
-.middle-symbol,
-.bottom-symbol {
-  width: 60px;
-  height: 60px;
-  background-color: #d6b885;
-  border: 3px solid #fff;
-  border-radius: 50%;
-  margin: 60px auto;
-  margin-right: 60px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-} */
-
-/* Main container */
-.mission-container {
-  margin-left: 180px;
-  width: 58%;
-}
-
-/* Card styling */
+/* ================= HERITAGE CARDS ================= */
 .card {
-  background-color: #fff7e6;
-  border: 1px solid #e0c892;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  padding: 30px 40px;
-  margin-bottom: 40px;
-  transition: transform 0.3s ease;
+  background: linear-gradient(180deg, #fffaf0, #f6ead3);
+  border: 1px solid #ead7b0;
+  border-radius: 18px;
+  box-shadow: 0 10px 26px rgba(90, 45, 26, 0.15);
+  padding: 40px 50px;
+  margin-bottom: 50px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .card:hover {
   transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(90, 45, 26, 0.22);
 }
 
-/* Headings */
+/* Headings — inscription style */
 .card h2 {
-  color: #6c4c1d;
-  font-size: 1.8rem;
-  margin-bottom: 15px;
+  font-family: 'Cinzel', serif;
+  color: #5a2d1a;
+  font-size: 2rem;
+  margin-bottom: 20px;
   text-align: center;
+  letter-spacing: 1px;
 }
 
-/* Mission list */
+/* Mission List */
 .mission-card ul {
-  list-style: disc;
-  padding-left: 25px;
-  color: #3b2a1a;
-  line-height: 1.8;
+  list-style: none;
+  padding-left: 0;
 }
 
 .mission-card li {
-  margin-bottom: 8px;
-  font-size: .8rem;
+  margin-bottom: 14px;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #4a3b2b;
+  position: relative;
+  padding-left: 28px;
 }
 
-/* Button */
-.know-more-btn {
-  background-color: #b68a45;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  padding: 10px 24px;
-  font-weight: 600;
-  margin-top: 20px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  transition: background 0.3s ease;
-}
-
-.know-more-btn:hover {
-  background-color: #8d6b35;
+/* Decorative bullet like manuscript marker */
+.mission-card li::before {
+  content: "✧";
+  position: absolute;
+  left: 0;
+  color: #b68a45;
+  font-size: 1rem;
+  top: 2px;
 }
 
 /* Vision paragraph */
 .vision-card p {
-  font-size: 1.1rem;
-  color: #3b2a1a;
-  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.15rem;
+  color: #4a3b2b;
   font-style: italic;
-  line-height: 1.7;
+  line-height: 1.8;
   text-align: center;
 }
-/* Values grid */
+
+/* ================= VALUES SECTION ================= */
 .values-card {
   text-align: center;
-  background-color: #fff7e6; /* Lighter background for the card */
-   border: 1px solid #e0c892; /* Blue border like in the second image */
-  border-radius: 15px; /* Rounded corners for the card */
-  padding: 30px 20px;
-  margin: 20px auto;
-
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(180deg, #fffaf0, #f6ead3);
+  border-radius: 18px;
+  border: 1px solid #ead7b0;
+  padding: 40px 20px;
+  box-shadow: 0 10px 26px rgba(90, 45, 26, 0.15);
 }
 
 .values-card h2 {
-  color: #6a3e2a; /* Darker brown for the heading */
-  font-size: 1.8rem;
+  font-family: 'Cinzel', serif;
+  color: #5a2d1a;
   margin-bottom: 30px;
 }
 
+/* Values grid */
 .values-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two columns */
-  gap: 30px; /* Space between items */
-  justify-items: center; /* Center items within their grid area */
-  align-items: center; /* Vertically center items */
-  position: relative; /* For positioning the compass rose */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px;
+  justify-items: center;
+  align-items: center;
+  position: relative;
 }
 
+/* Circular value medallions */
 .value-item {
-  background-color: #8c573d; /* Darker brown for the circles */
-  color: #fff; /* White text */
-  font-weight: 600; /* Bolder font */
-  font-size: 0.85rem; /* Slightly larger font */
+  background: radial-gradient(circle, #7C3A2D, #5a2d1a);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease;
   text-align: center;
-  width: 100px; /* Larger circles */
-  height: 100px; /* Larger circles */
-  border-radius: 50%; /* Perfect circles */
-  display: flex; /* For centering text vertically */
-  align-items: center; /* Center text vertically */
-  justify-content: center; /* Center text horizontally */
-  padding: 10px; /* Add some padding inside the circle */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .value-item:hover {
-  transform: scale(1.05);
-  background-color: #6a3e2a; /* Slightly darker on hover */
+  transform: scale(1.08);
 }
 
+/* Compass rose heritage emblem */
 .compass-rose-container {
-  grid-column: 1 / -1; /* Span across all columns */
-  grid-row: 1 / -1; /* Span across all rows */
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 0; /* Ensure it's behind the text circles */
-  position: absolute; /* Position it absolutely within the grid container */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Center it precisely */
+  position: absolute;
+  opacity: 0.25;
 }
 
 .compass-rose-image {
-  width: 150px; /* Size of the star/compass */
-  height: auto;
-  opacity: 0.6; /* Make it slightly transparent as in the example */
+  width: 200px;
 }
-

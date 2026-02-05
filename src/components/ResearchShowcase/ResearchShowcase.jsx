@@ -32,11 +32,20 @@ export default function ResearchShowcase() {
                   {item.img && (
                     <img src={item.img} alt={item.title} className="showcase-img" />
                   )}
+<div className="showcase-content">
+  <h4>{item.title}</h4>
+  <p>{item.desc}</p>
 
-                  <div className="showcase-content">
-                    <h4>{item.title}</h4>
-                    <p>{item.desc}</p>
-                  </div>
+  {/* Show Author/Year ONLY for Publications */}
+  {sec.title === "Publications" && (item.author || item.year) && (
+    <p className="showcase-meta">
+      {item.author && <>Author: {item.author}</>}
+      {item.author && item.year && " | "}
+      {item.year && <>Year: {item.year}</>}
+    </p>
+  )}
+</div>
+
                 </div>
               ))}
             </div>

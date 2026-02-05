@@ -1,93 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=EB+Garamond:wght@400;500&display=swap');
+
+/* ================= RESEARCH SHOWCASE — Heritage Archive ================= */
 .research-showcase-section {
-  background: #e9d8a6;
-  padding: 70px 20px;
+  background: linear-gradient(135deg, #f3e6cf 0%, #e8dcc7 100%);
+  padding: 100px 20px;
   display: flex;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border-top: 2px solid #d4af37;
+  border-bottom: 2px solid #d4af37;
+}
+
+/* Aged manuscript texture */
+.research-showcase-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://www.transparenttextures.com/patterns/aged-paper.png");
+  opacity: 0.22;
+  pointer-events: none;
 }
 
 .research-showcase-container {
-  width: min(1100px, 100%);
-  background: #fff7e6;
-  border: 2px solid #d8b24d;
-  border-radius: 18px;
-  padding: 35px 28px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+  width: min(1200px, 100%);
+  background: linear-gradient(180deg, #fffaf0, #f6ead3);
+  border: 1px solid #ead7b0;
+  border-radius: 22px;
+  padding: 50px 40px;
+  box-shadow: 0 18px 40px rgba(90,45,26,0.18);
+  position: relative;
+  z-index: 1;
 }
 
 .showcase-block {
-  margin-bottom: 40px;
+  margin-bottom: 65px;
 }
 
+/* Section Titles — Inscription Style */
 .showcase-title {
-  font-size: 1.3rem;
-  color: #7a3f2c;
-  font-weight: 700;
-  margin-bottom: 18px;
-  padding-left: 8px;
+  font-family: 'Cinzel', serif;
+  font-size: 1.8rem;
+  color: #5a2d1a;
+  font-weight: 600;
+  margin-bottom: 30px;
+  padding-left: 14px;
+  border-left: 5px solid #d4af37;
+  letter-spacing: 1px;
 }
 
+/* GRID */
 .showcase-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
+  gap: 30px;
 }
 
+/* CARD */
 .showcase-card {
-  background: #fff;
-  border-radius: 12px;
+  background: linear-gradient(180deg, #ffffff, #f9f2e3);
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-  transition: 0.25s ease;
-  border: 1px solid #f0ddae;
+  box-shadow: 0 8px 20px rgba(90,45,26,0.12);
+  border: 1px solid #f1dfb5;
+  display: flex;
+  flex-direction: column;
+  transition: 0.35s ease;
+  height: 100%;
 }
 
 .showcase-card:hover {
   transform: translateY(-6px);
+  box-shadow: 0 18px 38px rgba(90,45,26,0.2);
 }
 
+/* IMAGE */
 .showcase-img {
   width: 100%;
-  height: 130px;
+  height: 170px;
   object-fit: cover;
+  filter: saturate(0.95) contrast(1.05);
 }
 
+/* CONTENT */
 .showcase-content {
-  padding: 14px 14px 18px;
+  padding: 20px 18px 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   text-align: center;
 }
 
+/* TITLE */
 .showcase-content h4 {
-  font-size: 0.95rem;
-  color: #2a2a2a;
-  margin-bottom: 8px;
-  font-weight: 700;
-}
-
-.showcase-content p {
-  font-size: 0.78rem;
-  line-height: 1.45;
-  color: #444;
-  min-height: 70px;
-}
-
-.showcase-btn {
-  margin-top: 12px;
-  background: #7a3f2c;
-  color: #fff;
-  border: none;
-  border-radius: 20px;
-  padding: 8px 18px;
-  font-size: 0.8rem;
-  cursor: pointer;
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  color: #4a2516;
   font-weight: 600;
-  transition: 0.3s ease;
+  margin-bottom: 12px;
+  min-height: 52px;
+  letter-spacing: 0.5px;
 }
 
-.showcase-btn:hover {
-  background: #5a2c1f;
+/* DESCRIPTION */
+.showcase-content p {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #5a3d2b;
+  margin-bottom: 14px;
+  flex-grow: 1;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-/* Responsive */
+/* AUTHOR + YEAR (Publications Only) */
+.showcase-meta {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #7a3f2c;
+  border-top: 1px solid #ead7b0;
+  padding-top: 10px;
+  margin-top: auto;
+  letter-spacing: 0.4px;
+}
+
+/* RESPONSIVE */
 @media (max-width: 1024px) {
   .showcase-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -97,5 +139,10 @@
 @media (max-width: 600px) {
   .showcase-grid {
     grid-template-columns: 1fr;
+  }
+
+  .showcase-card {
+    max-width: 440px;
+    margin: 0 auto;
   }
 }

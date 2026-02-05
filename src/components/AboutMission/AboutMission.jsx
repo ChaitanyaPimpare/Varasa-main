@@ -24,7 +24,7 @@ export default function AboutMission() {
             <li><strong>Museums & Cultural Spaces:</strong> Establishing galleries and repositories for interactive education.</li>
             <li><strong>Digital Integration:</strong> Creating online repositories and interactive research databases.</li>
           </ul>
-          <button className="know-more-btn">Know More</button>
+          {/* <button className="know-more-btn">Know More</button> */}
         </div>
 
         {/* Vision Section */}

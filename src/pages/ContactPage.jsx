@@ -3,7 +3,7 @@ import "./ContactPage.css";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import ResearchHero from "../components/ResearchHero/ResearchHero";
-import logoSymbol from "../assets/logo-symbol.png";
+import logoSymbol from "../assets/logo-symbol.jpg";
 
 import bg from "../assets/heritageBg.png";  // ✅ optional background
 
@@ -11,7 +11,7 @@ export default function ContactPage() {
   return (
     <>
       <Header />
- <ResearchHero />
+
       <section className="contact-page">
         <div className="contact-card">
           

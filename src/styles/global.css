@@ -1,12 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=EB+Garamond:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=EB+Garamond:wght@400;500&display=swap');
 
 /* General Reset */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'EB Garamond', serif;
   background: #fdfaf4;
-  color: #222;
+  color: #2b2b2b;
 }
+
 
 html, body {
   max-width: 100%;
@@ -23,29 +27,32 @@ html, body {
 
 /* --- Header / top bar --- */
 .top-bar {
-  background-color: #d4af37;
-  padding: 10px 0;
+  background: linear-gradient(90deg, #d4af37, #e6c85a);
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 
 .top-bar-inner {
-  display: flex;
-  justify-content: center;   
-  align-items: center;       
-  gap: 20px;                 
-  font-size: 1rem;
-  color: #111010;
+  font-family: 'Cinzel', serif;
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: 1.05rem;
+  color: #4a2a15;
 }
-.brand-highlight { 
-  font-weight:800; font: size 2rem;color: #6b2b1c; }
+
+.brand-highlight {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #6b2b1c;
+}
 
 /* --- Nav bar --- */
 .nav-bar {
-  background: linear-gradient(135deg, #612e20 0%, #c37b2e 40%, #ab5926 100%);
-  height: 84px;
-  display:block;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.05);
-  position: relative;
+  background: linear-gradient(135deg, #5a2d1a 0%, #7c3a2d 45%, #a15c3a 100%);
+  height: 90px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
+
 .container {
   max-width: 1400px;
   margin: 0 auto;
@@ -68,7 +75,7 @@ html, body {
   top: 50%;
   transform: translateY(-50%);
   background: #fff;
-  padding: 10px 10px;
+  padding: 13px 13px;
   display:flex;
   align-items:center;
  
@@ -80,88 +87,105 @@ html, body {
 }
 
 /* Centered nav links */
-.nav-links {
-  display:flex;
-  gap:34px;
-  align-items:center;
-  justify-content:space-between;
-}
 .nav-links a {
-  color: #fff;
+  font-family: 'Cinzel', serif;
+  color: #fff8e7;
   text-decoration: none;
-  font-weight:lighter;
-  font-size:16px;
-  padding:6px 4px;
-  letter-spacing:0.2px;
+  font-size: 15px;
+  letter-spacing: 0.8px;
+  padding: 8px 6px;
+  position: relative;
+  transition: 0.3s ease;
 }
-.nav-links a:hover { opacity:0.92; }
 
-/* --- Hero --- */
+/* Gold underline animation */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: #d4af37;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ffd369;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+
+/* --- Hero Section (Heritage Style) --- */
 .hero {
-  background: #fff;
-  padding: 80px 0 40px;
+  background: linear-gradient(135deg, #f5ecd8 0%, #e8dcc7 100%);
+  padding: 100px 0 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle texture overlay */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://www.transparenttextures.com/patterns/aged-paper.png");
+  opacity: 0.25;
+  pointer-events: none;
 }
 
 .hero-inner {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 60px;
+  gap: 70px;
   flex-wrap: wrap;
 }
 
 /* Left side */
 .hero-text {
   flex: 1;
-  max-width: 600px;
+  max-width: 620px;
 }
 
 .hero-text h1 {
-  font-size: 56px;
-  line-height: 1.05;
-  color: var(--brown-deep);
-  font-weight: 800;
-  margin-bottom: 28px;
+  font-family: 'Cinzel', serif;
+  font-size: 60px;
+  line-height: 1.1;
+  color: #5a2d1a;
+  font-weight: 700;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
 }
 
-/* Gold highlight */
+/* Heritage highlight banner */
 .highlight-box {
   display: inline-block;
-  background: linear-gradient(135deg, #D4AF37 0%, #7C3A2D 100%);
-  color:  white;
+  background: linear-gradient(135deg, #7C3A2D, #D4AF37);
+  color: #fff;
+  font-family: 'Cinzel', serif;
   font-size: 18px;
-  padding: 12px 16px;
-  border-radius: 8px;
-  margin-bottom: 20px;
+  padding: 12px 20px;
+  border-radius: 4px;
+  margin-bottom: 22px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 .highlight-box strong {
-  color: var(--brown-deep);
+  color: #fff;
 }
 
 /* Paragraph */
 .hero-subtext {
-  font-size: 17px;
-  line-height: 1.7;
-  color: #444;
-  margin-bottom: 28px;
-}
-
-/* Button */
-.primary-btn {
-  background: linear-gradient(90deg, #6b2b1c 0%, #d4af37 100%);
-  color: #fff;
-  padding: 12px 26px;
-  border: none;
-  border-radius: 30px;
-  font-size: 15px;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-.primary-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
-  filter: brightness(1.05);
+  font-family: 'EB Garamond', serif;
+  font-size: 19px;
+  line-height: 1.8;
+  color: #4a3b2b;
+  margin-bottom: 30px;
 }
 
 /* Right side image */
@@ -169,227 +193,337 @@ html, body {
   flex: 1;
   display: flex;
   justify-content: center;
+  position: relative;
+}
+
+/* Ancient circular aura behind image */
+.circle-bg {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, rgba(212,175,55,0.35), transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .hero-image img {
   width: 100%;
   max-width: 620px;
-  border-radius: 16px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+  border-radius: 12px;
+  box-shadow: 0 22px 50px rgba(0,0,0,0.25);
+  position: relative;
+  z-index: 1;
   object-fit: cover;
+  border: 4px solid #d4af37;
 }
 
 
-/* ===== ABOUT SECTION — Heritage Banner Style ===== */
+
+/* ===== ABOUT SECTION — Ancient Heritage Style ===== */
 .about-section {
-  background: #efe2c7; /* soft heritage tone */
-  padding: 60px 50px;
-  border-top: 1px solid rgba(0,0,0,0.08);
-  border-bottom: 1px solid rgba(0,0,0,0.08);
+  background: linear-gradient(135deg, #f3e6cf 0%, #e8dcc7 100%);
+  padding: 80px 50px;
+  position: relative;
+  overflow: hidden;
+  border-top: 2px solid #d4af37;
+  border-bottom: 2px solid #d4af37;
+}
+
+/* Subtle aged texture */
+.about-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://www.transparenttextures.com/patterns/aged-paper.png");
+  opacity: 0.25;
+  pointer-events: none;
 }
 
 .about-container {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 50px;
   max-width: 1200px;
   margin: auto;
+  z-index: 1;
 }
 
 /* LEFT LOGO BADGE */
 .about-logo {
-  flex: 0 0 150px;
+  flex: 0 0 170px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle, rgba(212,175,55,0.25), transparent 70%);
+  border-radius: 50%;
+  padding: 25px;
 }
-
-
 
 /* RIGHT TEXT CONTENT */
 .about-text {
   flex: 1;
 }
 
+/* Heading — inscription style */
 .about-text h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
+  font-family: 'Cinzel', serif;
+  font-size: 2.3rem;
   color: #5a2d1a;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
 }
 
+/* Paragraph — manuscript feel */
 .about-text p {
-  font-size: 1rem;
-  color: #3e2a1f;
-  line-height: 1.7;
-  margin-bottom: 10px;
-  font-family: 'Lato', sans-serif;
+  font-family: 'EB Garamond', serif;
+  font-size: 1.15rem;
+  color:  #B08D2E;
+
+  line-height: 1.9;
+  margin-bottom: 14px;
 }
 
-/* BUTTON */
+/* Heritage Button */
 .about-text .primary-btn {
-  background: #6b2b1c;
+  background: linear-gradient(135deg, #7C3A2D, #D4AF37);
   color: #fff;
-  padding: 8px 18px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  margin-top: 8px;
-  transition: 0.3s ease;
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.5px;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.15);
 }
 
 .about-text .primary-btn:hover {
-  background: #4e1f12;
   transform: translateY(-2px);
+  background: linear-gradient(135deg, #5a2d1a, #c9a134);
 }
 
 /* ================= EVENTS SECTION ================= */
-.events-section,
-.programs-section,
-.research-section {
-  padding: 70px 80px 120px; /* less top, more bottom */
-}
 .events-section {
-  background: linear-gradient(135deg, #f5db34 0%, #ffefcb 45%, #D4AF37 100%);
-  padding: 60px 70px 110px;
+  background: linear-gradient(135deg, #f3e6cf 0%, #e8dcc7 100%);
+  padding: 80px 80px 130px;
   position: relative;
   overflow: hidden;
+  border-top: 2px solid #d4af37;
+  border-bottom: 2px solid #d4af37;
 }
 
+/* Subtle aged paper texture */
+.events-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://www.transparenttextures.com/patterns/aged-paper.png");
+  opacity: 0.25;
+  pointer-events: none;
+}
 
-/* Section Title */
+/* Section Title — Inscription Style */
 .section-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.4rem;
-  font-weight: 600;
+  font-family: 'Cinzel', serif;
+  font-size: 2.6rem;
+  text-align: center;
   color: #5a2d1a;
-  margin-bottom: 60px;
-  letter-spacing: 1px;
+  margin-bottom: 70px;
+  letter-spacing: 2px;
 }
 
 /* Grid */
 .events-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
+  gap: 36px;
+  position: relative;
+  z-index: 1;
 }
 
-/* ================= CARD ================= */
+/* ================= EVENT CARD ================= */
 .event-card {
-  background: #fffaf0;
-  border-radius: 16px;
+  background: linear-gradient(180deg, #fffaf0, #f6ead3);
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(90, 45, 26, 0.12);
-  transition: transform 0.45s ease, box-shadow 0.45s ease;
+  box-shadow: 0 8px 22px rgba(90, 45, 26, 0.15);
+  border: 1px solid #ead7b0;
   display: flex;
   flex-direction: column;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-/* Lift effect */
+/* Gentle heritage lift */
 .event-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
   box-shadow: 0 18px 38px rgba(90, 45, 26, 0.22);
 }
 
 /* Image */
 .event-card img {
   width: 100%;
-  height: 200px; /* slightly taller image */
+  height: 210px;
   object-fit: cover;
-  transition: transform 0.6s ease;
-}
-
-.event-card:hover img {
-  transform: scale(1.05);
+  filter: saturate(0.95) contrast(1.05);
 }
 
 /* Content */
 .event-content {
-  padding: 10px 10px;
+  padding: 18px 20px 22px;
+  text-align: center;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 
-/* Title */
+/* Title — Museum Label Style */
 .event-content h5 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.15rem;
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
   color: #4a2516;
   margin-bottom: 10px;
+  min-height: 48px;
+  letter-spacing: 0.5px;
+}
+
+/* Description — Manuscript Feel */
+.event-content p {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.95rem;
+  color: #5a3d2b;
+  line-height: 1.6;
+
+  min-height: 80px; /* keeps all cards same height */
+  overflow: hidden;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 
 
 
+/* ================= PROGRAMS SECTION — Heritage Archive Style ================= */
 .programs-section {
- background: linear-gradient(135deg, #D4AF37 0%, #f1e2b6 45%, #fff6e3 100%);
- padding: 90px 100px;
+  background: linear-gradient(135deg, #f3e6cf 0%, #e8dcc7 100%);
+  padding: 90px 100px 130px;
+  position: relative;
+  overflow: hidden;
+  border-top: 2px solid #d4af37;
+  border-bottom: 2px solid #d4af37;
 }
+
+/* Subtle aged paper texture */
 .programs-section::before {
   content: "";
   position: absolute;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(255,255,255,0.35), transparent 70%);
-  top: -150px;
-  left: -150px;
-  z-index: 0;
+  inset: 0;
+  background-image: url("https://www.transparenttextures.com/patterns/aged-paper.png");
+  opacity: 0.22;
+  pointer-events: none;
 }
 
+/* Soft museum light glow */
 .programs-section::after {
   content: "";
   position: absolute;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(124,58,45,0.15), transparent 70%);
-  bottom: -120px;
-  right: -120px;
-  z-index: 0;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(212,175,55,0.25), transparent 70%);
+  top: -160px;
+  right: -140px;
+  pointer-events: none;
 }
 
+/* Ensure content stays above texture layers */
 .programs-section > * {
   position: relative;
   z-index: 1;
 }
-
+/* ================= RESEARCH SECTION — Heritage Archive Style ================= */
 .research-section {
-  background: linear-gradient(135deg, #f8f5ef, #e8dcc7);
-  padding: 90px 100px;
+  background: linear-gradient(135deg, #f3e6cf 0%, #e8dcc7 100%);
+  padding: 100px 100px 140px;
+  position: relative;
+  overflow: hidden;
+  border-top: 2px solid #d4af37;
+  border-bottom: 2px solid #d4af37;
 }
 
+/* Subtle aged paper texture */
+.research-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://www.transparenttextures.com/patterns/aged-paper.png");
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+/* Grid */
 .research-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
+  gap: 40px;
+  position: relative;
+  z-index: 1;
 }
 
+/* ================= RESEARCH CARD ================= */
 .research-card {
-  background: #fffaf0;
-  border-radius: 16px;
-  padding: 50px 25px;
+  background: linear-gradient(180deg, #fffaf0, #f6ead3);
+  border-radius: 20px;
+  padding: 40px 25px 35px;
   text-align: center;
-  box-shadow: 0 6px 18px rgba(90, 45, 26, 0.1);
-  transition: all 0.4s ease;
+  box-shadow: 0 8px 22px rgba(90, 45, 26, 0.15);
+  border: 1px solid #ead7b0;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .research-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 18px 38px rgba(90, 45, 26, 0.18);
+  transform: translateY(-6px);
+  box-shadow: 0 18px 38px rgba(90, 45, 26, 0.22);
 }
 
+/* ================= CIRCULAR IMAGE FRAME ================= */
 .research-icon {
-  width: 110px;
-  height: 110px;
-  object-fit: contain;
-  margin-bottom: 20px;
-  transition: transform 0.4s ease;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 18px;
+
+  /* Heritage frame effect */
+  padding: 1px;
+  background: linear-gradient(135deg, #D4AF37, #7C3A2D);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.18);
 }
 
-.research-card:hover .research-icon {
-  transform: scale(1.1);
-}
-
+/* Title */
 .research-card h5 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
+  font-family: 'Cinzel', serif;
+  font-size: 1.15rem;
   color: #4a2516;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+/* Description */
+.research-card p {
+  font-family: 'EB Garamond', serif;
+  font-size: 0.95rem;
+  color: #5a3d2b;
+  line-height: 1.6;
+  min-height: 72px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* ================= RESPONSIVE ================= */

@@ -8,6 +8,9 @@ const pageSections = {
     { key: "events", label: "Events (Home Page)", limit: 4 },
     { key: "researchHome", label: "Research Highlights (Home Page)", limit: 4 }
   ],
+  about: [
+    { key: "about_team", label: "About Page – Team Members", limit: 8 }
+  ],
   research: [
     { key: "research_publications", label: "Publications", limit: 4 },
     { key: "research_seminars", label: "Learning & Seminars", limit: 4 },
@@ -46,7 +49,11 @@ export default function AdminDashboard() {
     saveData(section, updated);
   };
 
+  /* 🔒 LOCK ADD FOR ABOUT PAGE */
   const addNew = () => {
+    if (section === "about_team")
+      return alert("Team members are fixed. You can only edit them.");
+
     if (items.length >= cardLimit)
       return alert(`Only ${cardLimit} cards allowed in this section`);
 
@@ -58,12 +65,19 @@ export default function AdminDashboard() {
         desc: "Description",
         img: "",
         date: "",
-        location: ""
+        location: "",
+        author: "",
+        year: "",
+        subtitle: ""
       }
     ]);
   };
 
+  /* 🔒 LOCK DELETE FOR ABOUT PAGE */
   const deleteItem = (id) => {
+    if (section === "about_team")
+      return alert("You cannot delete team members.");
+
     saveAll(items.filter(i => i.id !== id));
     if (selected?.id === id) setSelected(null);
   };
@@ -75,6 +89,7 @@ export default function AdminDashboard() {
 
   const handleDragStart = (index) => setDragIndex(index);
   const handleDrop = (index) => {
+    if (section === "about_team") return; // no reordering team cards
     const reordered = [...items];
     const [moved] = reordered.splice(dragIndex, 1);
     reordered.splice(index, 0, moved);
@@ -99,6 +114,7 @@ export default function AdminDashboard() {
         <label>Page</label>
         <select value={page} onChange={e => setPage(e.target.value)}>
           <option value="home">Home Page Sections</option>
+          <option value="about">About Page</option>
           <option value="research">Research Page Sections</option>
           <option value="eventsPage">Events Page Slider</option>
         </select>
@@ -117,14 +133,16 @@ export default function AdminDashboard() {
           {items.map((item, index) => (
             <li
               key={item.id}
-              draggable
+              draggable={section !== "about_team"}
               onDragStart={() => handleDragStart(index)}
               onDragOver={(e) => e.preventDefault()}
               onDrop={() => handleDrop(index)}
               className={`admin-list-item ${selected?.id === item.id ? "active" : ""}`}
             >
               <span className="title" onClick={() => setSelected(item)}>{item.title}</span>
-              <button className="delete-icon" onClick={() => deleteItem(item.id)}>🗑</button>
+              {section !== "about_team" && (
+                <button className="delete-icon" onClick={() => deleteItem(item.id)}>🗑</button>
+              )}
             </li>
           ))}
         </ul>
@@ -135,34 +153,94 @@ export default function AdminDashboard() {
           <>
             <h3>Edit Card</h3>
 
-            <label>Title</label>
-            <input value={selected.title} onChange={e => setSelected({ ...selected, title: e.target.value })} />
+            {/* ⭐ ABOUT PAGE TEAM EDITOR */}
+            {section === "about_team" ? (
+              <>
+                <label>Member Name</label>
+                <input
+                  value={selected.title}
+                  onChange={e => setSelected({ ...selected, title: e.target.value })}
+                />
 
-            <label>Description</label>
-            <textarea value={selected.desc} onChange={e => setSelected({ ...selected, desc: e.target.value })} />
+                <label>Role / Designation</label>
+                <input
+                  value={selected.subtitle || ""}
+                  onChange={e => setSelected({ ...selected, subtitle: e.target.value })}
+                />
 
-            {(page === "eventsPage") && (
+                <label>Biography</label>
+                <textarea
+                  rows="6"
+                  value={selected.desc}
+                  onChange={e => setSelected({ ...selected, desc: e.target.value })}
+                />
+              </>
+            ) : (
+              <>
+                <label>Title</label>
+                <input
+                  value={selected.title}
+                  onChange={e => setSelected({ ...selected, title: e.target.value })}
+                />
+
+                <label>Description</label>
+                <textarea
+                  value={selected.desc}
+                  onChange={e => setSelected({ ...selected, desc: e.target.value })}
+                />
+              </>
+            )}
+
+            {/* Publications Only */}
+            {section === "research_publications" && (
+              <>
+                <label>Author</label>
+                <input
+                  value={selected.author || ""}
+                  onChange={e => setSelected({ ...selected, author: e.target.value })}
+                />
+                <label>Year</label>
+                <input
+                  value={selected.year || ""}
+                  onChange={e => setSelected({ ...selected, year: e.target.value })}
+                />
+              </>
+            )}
+
+            {/* Events Page Only */}
+            {page === "eventsPage" && (
               <>
                 <label>Date</label>
-                <input value={selected.date || ""} onChange={e => setSelected({ ...selected, date: e.target.value })} />
-
+                <input
+                  value={selected.date || ""}
+                  onChange={e => setSelected({ ...selected, date: e.target.value })}
+                />
                 <label>Location</label>
-                <input value={selected.location || ""} onChange={e => setSelected({ ...selected, location: e.target.value })} />
+                <input
+                  value={selected.location || ""}
+                  onChange={e => setSelected({ ...selected, location: e.target.value })}
+                />
               </>
             )}
 
             <label>Image</label>
-            <input type="file" accept="image/*" onChange={e => {
-              const reader = new FileReader();
-              reader.onload = () => setSelected({ ...selected, img: reader.result });
-              reader.readAsDataURL(e.target.files[0]);
-            }} />
+            <input
+              type="file"
+              accept="image/*"
+              onChange={e => {
+                const reader = new FileReader();
+                reader.onload = () =>
+                  setSelected({ ...selected, img: reader.result });
+                reader.readAsDataURL(e.target.files[0]);
+              }}
+            />
 
-            {selected.img && <img src={selected.img} alt="" className="admin-preview" />}
+            {selected.img && (
+              <img src={selected.img} alt="" className="admin-preview" />
+            )}
 
             <div className="admin-actions">
               <button onClick={saveItem}>Save Changes</button>
-              <button onClick={() => deleteItem(selected.id)} className="danger">Delete Card</button>
             </div>
           </>
         ) : (
