@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { loadData } from "../../utils/storage";
+import { getSection } from "../../api/contentApi";
 import "./ResearchShowcase.css";
 
 export default function ResearchShowcase() {
@@ -7,10 +7,19 @@ export default function ResearchShowcase() {
   const [seminars, setSeminars] = useState([]);
   const [training, setTraining] = useState([]);
 
+  /* -------- LOAD FROM BACKEND -------- */
   useEffect(() => {
-    setPublications(loadData("research_publications", []));
-    setSeminars(loadData("research_seminars", []));
-    setTraining(loadData("research_training", []));
+    async function loadAll() {
+      const pub = await getSection("research_publications");
+      const sem = await getSection("research_seminars");
+      const train = await getSection("research_training");
+
+      setPublications(pub);
+      setSeminars(sem);
+      setTraining(train);
+    }
+
+    loadAll();
   }, []);
 
   const sections = [
@@ -22,35 +31,46 @@ export default function ResearchShowcase() {
   return (
     <section className="research-showcase-section">
       <div className="research-showcase-container">
+
         {sections.map((sec, index) => (
           <div key={index} className="showcase-block">
+
             <h3 className="showcase-title">{sec.title}</h3>
 
             <div className="showcase-grid">
-              {sec.items.map((item, idx) => (
-                <div key={idx} className="showcase-card">
-                  {item.img && (
-                    <img src={item.img} alt={item.title} className="showcase-img" />
-                  )}
-<div className="showcase-content">
-  <h4>{item.title}</h4>
-  <p>{item.desc}</p>
+              {sec.items.map(item => (
+                <div key={item.id} className="showcase-card">
 
-  {/* Show Author/Year ONLY for Publications */}
-  {sec.title === "Publications" && (item.author || item.year) && (
-    <p className="showcase-meta">
-      {item.author && <>Author: {item.author}</>}
-      {item.author && item.year && " | "}
-      {item.year && <>Year: {item.year}</>}
-    </p>
-  )}
-</div>
+                  {/* IMAGE */}
+                  {item.img && (
+                    <img
+                      src={`http://127.0.0.1:5000${item.img}`}
+                      alt={item.title}
+                      className="showcase-img"
+                    />
+                  )}
+
+                  <div className="showcase-content">
+                    <h4>{item.title}</h4>
+                    <p>{item.desc}</p>
+
+                    {/* Publications Meta */}
+                    {sec.title === "Publications" && (item.author || item.year) && (
+                      <p className="showcase-meta">
+                        {item.author && <>Author: {item.author}</>}
+                        {item.author && item.year && " | "}
+                        {item.year && <>Year: {item.year}</>}
+                      </p>
+                    )}
+                  </div>
 
                 </div>
               ))}
             </div>
+
           </div>
         ))}
+
       </div>
     </section>
   );

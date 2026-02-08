@@ -7,19 +7,53 @@ export default function AdminLogin() {
   const [pass, setPass] = useState("");
   const [error, setError] = useState("");
   const [showPass, setShowPass] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const login = () => {
+  const login = async () => {
+    setError("");
+
     if (!user || !pass) {
       setError("Please fill all fields");
       return;
     }
 
-    if (user === "admin" && pass === "varasa123") {
-      localStorage.setItem("isAdmin", "true");
+    try {
+      setLoading(true);
+
+      const res = await fetch("http://127.0.0.1:5000/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username: user,
+          password: pass
+        })
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.message || "Invalid credentials");
+        setLoading(false);
+        return;
+      }
+
+      // ⭐ SAVE TOKEN
+      localStorage.setItem("token", data.token);
+
+      // go to dashboard
       window.location.href = "/admin-dashboard";
-    } else {
-      setError("Invalid credentials");
+
+    } catch (err) {
+      setError("Cannot connect to backend server");
+    } finally {
+      setLoading(false);
     }
+  };
+
+  const handleEnter = (e) => {
+    if (e.key === "Enter") login();
   };
 
   return (
@@ -31,6 +65,7 @@ export default function AdminLogin() {
           placeholder="Username"
           value={user}
           onChange={(e) => setUser(e.target.value)}
+          onKeyDown={handleEnter}
         />
 
         <div className="password-field">
@@ -39,19 +74,19 @@ export default function AdminLogin() {
             placeholder="Password"
             value={pass}
             onChange={(e) => setPass(e.target.value)}
+            onKeyDown={handleEnter}
           />
 
-          <span
-            className="toggle-pass"
-            onClick={() => setShowPass(!showPass)}
-          >
+          <span className="toggle-pass" onClick={() => setShowPass(!showPass)}>
             {showPass ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
           </span>
         </div>
 
         {error && <p className="admin-error">{error}</p>}
 
-        <button onClick={login}>Login</button>
+        <button onClick={login} disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
+        </button>
       </div>
     </div>
   );

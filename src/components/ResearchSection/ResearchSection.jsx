@@ -1,20 +1,32 @@
 import React, { useEffect, useState } from "react";
-import { loadData } from "../../utils/storage";
+import { getSection } from "../../api/contentApi";
 
 export default function ResearchHomeSection() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    setItems(loadData("researchHome", []));  // ✅ MATCH ADMIN
+    async function load() {
+      const data = await getSection("researchHome");
+      setItems(data);
+    }
+    load();
   }, []);
 
   return (
     <section id="research-home" className="research-section">
       <h3 className="section-title">Research Highlights</h3>
+
       <div className="research-grid">
         {items.map(item => (
           <div className="research-card" key={item.id}>
-            {item.img && <img src={item.img} alt={item.title} className="research-icon" />}
+            {item.img && (
+              <img
+                src={`http://127.0.0.1:5000${item.img}`}
+                alt={item.title}
+                className="research-icon"
+              />
+            )}
+
             <h5>{item.title}</h5>
             <p>{item.desc}</p>
           </div>
