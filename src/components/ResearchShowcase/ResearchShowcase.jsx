@@ -44,7 +44,7 @@ export default function ResearchShowcase() {
                   {/* IMAGE */}
                   {item.img && (
                     <img
-                      src={`http://127.0.0.1:5000${item.img}`}
+                      src={`https://varasa-main-six.vercel.app/${item.img}`}
                       alt={item.title}
                       className="showcase-img"
                     />

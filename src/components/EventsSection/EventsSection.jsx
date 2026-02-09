@@ -21,7 +21,7 @@ export default function EventsSection() {
           <div className="event-card" key={e.id}>
             {e.img && (
               <img
-                src={`http://127.0.0.1:5000${e.img}`}
+                src={`https://varasa-main-six.vercel.app/${e.img}`}
                 alt={e.title}
               />
             )}
