@@ -39,8 +39,12 @@ export default function AdminDashboard() {
 
   /* ---------- AUTH ---------- */
   useEffect(() => {
-    if (!localStorage.getItem("isAdmin")) window.location.href = "/";
-  }, []);
+  const token = localStorage.getItem("token");
+  if (!token) {
+    window.location.href = "/admin-login";
+  }
+}, []);
+
 
   /* ---------- Change page -> first section ---------- */
   useEffect(() => {
@@ -113,9 +117,11 @@ export default function AdminDashboard() {
 
   /* ---------- LOGOUT ---------- */
   const logout = () => {
-    localStorage.removeItem("isAdmin");
-    window.location.href = "/";
-  };
+  localStorage.removeItem("token");
+  sessionStorage.clear();
+  window.location.href = "/admin-login";
+};
+
 
   return (
     <div className="admin-layout">
@@ -236,7 +242,8 @@ export default function AdminDashboard() {
 
             {selected.img && (
               <img
-                src={`http://127.0.0.1:5000${selected.img}`}
+                src={`https://varasa-backend.onrender.com${selected.img}`}
+
                 alt=""
                 className="admin-preview"
               />
