@@ -23,12 +23,12 @@ export default function AdminLogin() {
       const res = await fetch("https://varasa-backend.onrender.com/api/login", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           username: user,
-          password: pass
-        })
+          password: pass,
+        }),
       });
 
       const data = await res.json();
@@ -39,12 +39,8 @@ export default function AdminLogin() {
         return;
       }
 
-      // ⭐ SAVE TOKEN
       localStorage.setItem("token", data.token);
-
-      // go to dashboard
       window.location.href = "/admin-dashboard";
-
     } catch (err) {
       setError("Cannot connect to backend server");
     } finally {
@@ -62,6 +58,7 @@ export default function AdminLogin() {
         <h2>Admin Login</h2>
 
         <input
+          className="admin-input"
           placeholder="Username"
           value={user}
           onChange={(e) => setUser(e.target.value)}
@@ -77,16 +74,29 @@ export default function AdminLogin() {
             onKeyDown={handleEnter}
           />
 
-          <span className="toggle-pass" onClick={() => setShowPass(!showPass)}>
+          <span
+            className="toggle-pass"
+            onClick={() => setShowPass(!showPass)}
+          >
             {showPass ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
           </span>
         </div>
 
         {error && <p className="admin-error">{error}</p>}
 
-        <button onClick={login} disabled={loading}>
+        <button className="login-btn" onClick={login} disabled={loading}>
           {loading ? "Logging in..." : "Login"}
         </button>
+
+        {/* Back Button */}
+        <div className="admin-sidebar">
+          <button
+            className="back-btn"
+            onClick={() => (window.location.href = "/")}
+          >
+            ← Back to Website
+          </button>
+        </div>
       </div>
     </div>
   );
