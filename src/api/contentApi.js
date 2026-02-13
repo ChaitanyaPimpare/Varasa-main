@@ -1,4 +1,4 @@
-const API = "https://varasa-backend.onrender.com";
+const API = "https://varasa-backend.onrender.com/api";
 
 /* ---------- TOKEN HEADER ---------- */
 function authHeader() {
