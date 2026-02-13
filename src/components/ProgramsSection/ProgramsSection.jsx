@@ -21,7 +21,7 @@ export default function ProgramsSection() {
           <div className="event-card" key={p.id}>
             {p.img && (
               <img
-                src={`https://varasa-main-six.vercel.app/${p.img}`}
+                src={`https://varasa-backend.onrender.com/${p.img}`}
                 alt={p.title}
               />
             )}

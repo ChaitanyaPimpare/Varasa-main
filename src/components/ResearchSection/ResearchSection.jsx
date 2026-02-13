@@ -21,7 +21,7 @@ export default function ResearchHomeSection() {
           <div className="research-card" key={item.id}>
             {item.img && (
               <img
-                src={`http://127.0.0.1:5000${item.img}`}
+                src={`https://varasa-backend.onrender.com${item.img}`}
                 alt={item.title}
                 className="research-icon"
               />
